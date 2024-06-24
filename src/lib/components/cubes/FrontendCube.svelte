@@ -1,7 +1,10 @@
 <script lang="ts">
-    import { T, useFrame } from '@threlte/core';
+    import { T } from '@threlte/core';
+    import { Text3DGeometry } from "@threlte/extras";
     import { spring } from "svelte/motion";
     import { Vector3 } from "three";
+    import { selectedCube } from "../../../stores";
+    import { get } from "svelte/store";
     
     export let color: string;
     
@@ -18,6 +21,14 @@
 </script>
 
 <T.Group>
+
+    <T.Mesh
+            position={[$PositionX - $PositionScale / 6, $PositionY + $PositionScale / 2, $PositionZ + $PositionScale / 2]}
+            scale={$scale / 1000}
+    >
+        <Text3DGeometry text="Frontend" />
+        <T.MeshStandardMaterial color={color} />
+    </T.Mesh>
 
     <T.Mesh
         position={[4, $PositionY, -4]}

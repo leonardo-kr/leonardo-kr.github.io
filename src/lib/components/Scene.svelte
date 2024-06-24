@@ -1,7 +1,18 @@
 <script lang="ts">
+    import {onDestroy, onMount} from "svelte";
+
+    enum cube {
+        none = -1,
+        backend = 0,
+        frontend = 1,
+        tool = 2,
+        database = 3
+    }
+    
     import { T, useFrame } from '@threlte/core';
     import { interactivity, OrbitControls, Text } from "@threlte/extras";
-    import { spring } from "svelte/motion";
+    import { selectedCube } from "../../stores";
+
     
     import { Vector3 } from "three";
     
@@ -11,24 +22,45 @@
     import DatabaseCube from "$lib/components/cubes/DatabaseCube.svelte";
     
     interactivity();
-
+    
+    const unsubscribe = selectedCube.subscribe(value => {
+        console.log(value);
+        switch (value) {
+            case cube.none:
+                break;
+            case cube.backend:
+                break;
+            case cube.frontend:
+                break;
+            case cube.tool:
+                break;
+            case cube.database:
+                break;
+            default:
+                break;
+        }
+    });
+    
     let rotation = 0
     useFrame(() => {
         rotation += 0.0005
-    })
+    });
+    
+    onDestroy(unsubscribe);
 </script>
 
 <T.Group rotation.y={rotation}>
     <T.PerspectiveCamera
             makeDefault
-            position={[-30, 30, 30]}
+            position={[-30, 15, 30]}
             fov={15}
             on:create={({ ref }) => {
-      ref.lookAt(0, 0, 0)
-    }}
+                ref.lookAt(0, 0, 0)
+            }}
+            focalLength={10}
     >
         <!--    maxPolarAngle={1.4}-->
-        <OrbitControls enableDamping  enablePan={false} />
+        <OrbitControls enableDamping  enablePan={false} maxPolarAngle={1.4} />
     </T.PerspectiveCamera>
 </T.Group>
 
@@ -47,7 +79,6 @@
 
 <!--position.z={6.6}-->
 <T.Group>
-
 
     <BackendCube 
             color={"#00D000"}

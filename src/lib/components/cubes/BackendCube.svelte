@@ -1,8 +1,11 @@
 <script lang="ts">
-    import { T, useFrame } from '@threlte/core';
+    import { T } from '@threlte/core';
+    import { Text3DGeometry } from "@threlte/extras";
     import { spring } from "svelte/motion";
     import { Vector3 } from "three";
-    
+    import { selectedCube } from "../../../stores";
+    import { get } from "svelte/store";
+
     export let color: string;
     
     export let position: Vector3 = new Vector3(0, 0, 0);
@@ -18,6 +21,14 @@
 </script>
 
 <T.Group>
+    
+    <T.Mesh
+        position={[$PositionX - $PositionScale / 6, $PositionY + $PositionScale / 2, $PositionZ + $PositionScale / 2]}
+        scale={$scale / 1000}
+    >
+        <Text3DGeometry text="Backend" />
+        <T.MeshStandardMaterial color={color} />
+    </T.Mesh>
 
     <T.Mesh
         position={[-4, $PositionY, -4]}
@@ -35,16 +46,21 @@
             event.stopPropagation();
         }}
         on:pointerleave={() => {
+            if (get(selectedCube) === 0) {
+                selectedCube.set(-1);
+            }
             scale.set(2.5);
-            PositionX.set(-4.5);
-            PositionY.set(1);
-            PositionZ.set(-4.5);
+            PositionX.set(position.x);
+            PositionY.set(position.y);
+            PositionZ.set(position.z);
             
             PositionScale.set(1);
         }}
+        on:click={() => {
+            selectedCube.set(0);
+        }}
     >
         <T.BoxGeometry />
-        <!--  <T.MeshStandardMaterial color="#0059BA" transparent={true} opacity={0.5} />-->
         <T.MeshStandardMaterial color={color} transparent={true} opacity={0.25} />
     </T.Mesh>
     <T.Mesh
