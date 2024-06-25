@@ -117,7 +117,10 @@
 
     <h2>Dokumente</h2>
     <div class="docs">
+        <h3>Lebenslauf</h3>
         <embed src={lebenslauf} type="application/pdf">
+
+        <h3>Modulnotenübersicht</h3>
         <embed src={modulnoten} type="application/pdf">
     </div>
     
