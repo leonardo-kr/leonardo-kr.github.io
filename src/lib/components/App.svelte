@@ -87,6 +87,9 @@
     </div>
 
     <h2>Informatikkompetenzen</h2>
+        <p>
+            Die vier Würfel gruppieren verschiedene Aspekte meiner Informatikkompetenzen zusammen. In diesen Würfeln gibt es Türme, welche meine Kompetenzen in einer bestimmten Sprache o.ä. zeigen. Je höher der Balken, desto grösser sind meine Kompetenzen in dieser Sprache.
+        </p>
     <div class="skills">
         <Canvas>
           <Scene />
