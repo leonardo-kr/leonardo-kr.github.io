@@ -1,6 +1,11 @@
 <script lang="ts">
-  import { Canvas } from '@threlte/core'
-  import Scene from './Scene.svelte'
+  import { Canvas } from '@threlte/core';
+  import Scene from './Scene.svelte';
+
+  import bugtracker from "$lib/assets/images/bugtracker.png";
+  import lebenslauf from "$lib/assets/docs/lebenslauf.pdf";
+  import modulnoten from "$lib/assets/docs/modulnoten.pdf";
+
 </script>
 
 <style>
@@ -10,7 +15,6 @@
         font-size: 1vw;
     }
     .body {
-        height: 100%;
         padding-left: 12.5%;
         padding-right: 12.5%;
         display: flex;
@@ -19,7 +23,7 @@
     }
 
     .skills {
-        min-height: 65%;
+        min-height: 65vh;
         border: rgb(200, 200, 200) 4px solid;
         border-radius: 2px;
     }
@@ -33,6 +37,41 @@
         color: rgb(200, 200, 200);
         font-size: 1.5vw;
         text-align: center;
+    }
+
+    h3 {
+        color: rgb(180, 180, 180);
+        font-size: 1.2vw;
+        text-align: center;
+    }
+
+    img {
+        width: 50vw;
+        height: auto;
+    }
+
+    footer {
+        height: 12.5%;
+    }
+    
+    .examples div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1vw;
+    }
+
+    .docs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2vh;
+    }
+
+    embed {
+        width: 100%;
+        height: 75vh;
     }
 </style>
 <div class="body">
@@ -54,24 +93,33 @@
         </Canvas>
     </div>
 
-    <div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-        test
+    <h2>Arbeitsbeispiele</h2>
+    <div class="examples">
+        <h3>Portfolio</h3>
+        <div>
+            <p>
+                Das erste Beispiel ist natürlich das Portfolio, welches Sie sehen. Dieses können Sie auf 
+                <a href="https://www.github.com/yetanothercoder00/yetanothercoder00.github.io">Github</a> anschauen.
+            </p>
+        </div>
+
+        <h3>Bug Tracker</h3>
+        <div>
+            <p>
+                Das zweite Beispiel ist ein "Bug Tracker", welcher ich mit ASP.NET, C# und Microsoft SQL Server gebaut habe. Dies können Sie natürlich auch auf <a href="https://www.github.com/yetanothercoder00/bugtracker">Github</a> finden.
+            </p>
+            <img src={bugtracker} alt="Screenshot vom Bug Tracker" />
+        </div>
+    </div>
+
+    <h2>Dokumente</h2>
+    <div class="docs">
+        <embed src={lebenslauf} type="application/pdf">
+        <embed src={modulnoten} type="application/pdf">
     </div>
     
 </div>
+
+<footer>
+
+</footer>

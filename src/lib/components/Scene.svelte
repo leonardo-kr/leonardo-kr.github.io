@@ -121,11 +121,11 @@
         scale={0.45}
 
         on:click={(event) => {
-            if (selectedCube < 3) {
-                selectedCube += 1;
+            if (selectedCube > 0) {
+                selectedCube -= 1;
             }
             else {
-                selectedCube = 0;
+                selectedCube = 3;
             }
             setPosition();
             event.stopPropagation();
@@ -207,11 +207,11 @@
 
         on:click={(event) => {
             // change selected cube
-            if (selectedCube > 0) {
-                selectedCube -= 1;
+            if (selectedCube < 3) {
+                selectedCube += 1;
             }
             else {
-                selectedCube = 3;
+                selectedCube = 0;
             }
             setPosition();
             event.stopPropagation();
