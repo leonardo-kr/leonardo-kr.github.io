@@ -83,6 +83,7 @@
     <T.Mesh
             position={[$PositionX, $PositionY / 3.3, $PositionZ]}
             scale={[$scale / 8, $scale / 4, $scale / 8]}
+            castShadow
     >
         <T.BoxGeometry />
         <T.MeshStandardMaterial color={color} />
@@ -91,6 +92,7 @@
     <T.Mesh
             position={[$PositionX + $PositionScale, $PositionY / 3.3, $PositionZ]}
             scale={[$scale / 8, $scale / 4, $scale / 8]}
+            castShadow
     >
         <T.BoxGeometry />
         <T.MeshStandardMaterial color={color} />
@@ -99,6 +101,7 @@
     <T.Mesh
             position={[$PositionX + $PositionScale, $PositionY / 3.3, $PositionZ + $PositionScale]}
             scale={[$scale / 8, $scale / 4, $scale / 8]}
+            castShadow
     >
         <T.BoxGeometry />
         <T.MeshStandardMaterial color={color} />
@@ -107,6 +110,7 @@
     <T.Mesh
             position={[$PositionX, $PositionY / 3.3, $PositionZ + $PositionScale]}
             scale={[$scale / 8, $scale / 4, $scale / 8]}
+            castShadow
     >
         <T.BoxGeometry />
         <T.MeshStandardMaterial color={color} />

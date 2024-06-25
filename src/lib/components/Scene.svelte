@@ -2,8 +2,8 @@
     import {onDestroy, onMount} from "svelte";
 
     import { T, useFrame } from '@threlte/core';
-    import { interactivity, OrbitControls, Text } from "@threlte/extras";
-    import { Vector3 } from "three";
+    import { interactivity, Environment, OrbitControls } from "@threlte/extras";
+    import { CircleGeometry, MeshStandardMaterial, Vector3 } from "three";
 
     import { get } from "svelte/store";
     import { spring } from "svelte/motion";
@@ -24,16 +24,16 @@
 
     interactivity();
 
-    const rotation = spring(0);
-    rotation.stiffness = 0.01;
-    rotation.damping = 1;
+    // const rotation = spring(0);
+    // rotation.stiffness = 0.01;
+    // rotation.damping = 1;
     
     const backendPosition = new Vector3(-4.5, 1, -4.5);
     const frontendPosition = new Vector3(3.5, 1, -4.5);
     const toolPosition = new Vector3(-4.5, 1, 3.5);
     const databasePosition = new Vector3(3.5, 1, 3.5);
     
-    const cameraPosition = new Vector3(-30, 15, 30);
+    const cameraPosition = new Vector3(-20, 11, 30);
     const cameraPositionX = spring(cameraPosition.x);
     const cameraPositionY = spring(cameraPosition.y);
     const cameraPositionZ = spring(cameraPosition.z);
@@ -55,7 +55,7 @@
                 lookAtZ.set(0);
                 break;
             case cube.backend:
-                rotation.set(0);
+                // rotation.set(0);
                 cameraPositionX.set(backendPosition.x - 2.25);
                 cameraPositionY.set(5);
                 cameraPositionZ.set(backendPosition.z + 30);
@@ -92,20 +92,20 @@
     useFrame(() => {
         if (get(selectedCube) === cube.none) {
             // rotation += 0.0005;
-            rotation.update((value) => value += 0.0005);
+            // rotation.update((value) => value += 0.0005);
         }
     });
     
     onDestroy(unsubscribe);
 </script>
 
-<T.Group rotation.y={$rotation}>
+<T.Group rotation.y={0}>
     <T.PerspectiveCamera
             makeDefault
             position={[$cameraPositionX, $cameraPositionY, $cameraPositionZ]}
             fov={15}
             on:create={({ ref }) => {
-                ref.lookAt(0, 0, 0);
+                ref.lookAt($lookAtX, $lookAtY, $lookAtZ);
             }}
             focalLength={10}
     >
@@ -114,25 +114,28 @@
     </T.PerspectiveCamera>
 </T.Group>
 
-<T.DirectionalLight
-        intensity={1.2}
-        position.x={5}
-        position.y={10}
-        position.z={5}
-        castShadow
+<T.PointLight 
+    position={[1, 3, 10]}
+    intensity={4}
+    decay={0.2}
+    castShadow
 />
+
 <T.AmbientLight intensity={0.4} />
 
-<!--<T.Fog attach="fog" color="#ffffff" near={0} far={200} >-->
-<!--  -->
-<!--</T.Fog>-->
+<T.Group>
+    
+    <T.Mesh
+        position={[5, -2, -10]}
 
-<!--position.z={6.6}-->
-<T.Group
-    on:click={() => {
-        console.log("test");
-    }}
->
+        rotation.y={-30 / 180 * Math.PI}
+        rotation.z={45 / 180 * Math.PI}
+
+        scale={12}
+    >
+        <T.CircleGeometry args={[2.5, 4]} />
+        <T.MeshStandardMaterial color={"#202020"} />
+    </T.Mesh>
 
     <BackendCube 
             color={"#00D000"}

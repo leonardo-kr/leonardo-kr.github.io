@@ -21,7 +21,6 @@
 </script>
 
 <T.Group>
-    
 
     <T.Mesh
             position={[$PositionX + $PositionScale / 20, $PositionY + $PositionScale / 2, $PositionZ + $PositionScale / 2]}
@@ -63,7 +62,6 @@
         }}
     >
         <T.BoxGeometry />
-        <!--  <T.MeshStandardMaterial color="#0059BA" transparent={true} opacity={0.5} />-->
         <T.MeshStandardMaterial color={color} transparent={true} opacity={0.25} />
     </T.Mesh>
     <T.Mesh
@@ -84,6 +82,7 @@
     <T.Mesh
             position={[$PositionX, $PositionY / 3.3, $PositionZ]}
             scale={[$scale / 8, $scale / 4, $scale / 8]}
+            castShadow
     >
         <T.BoxGeometry />
         <T.MeshStandardMaterial color={color} />
@@ -92,6 +91,7 @@
     <T.Mesh
             position={[$PositionX + $PositionScale, $PositionY / 3.3, $PositionZ]}
             scale={[$scale / 8, $scale / 4, $scale / 8]}
+            castShadow
     >
         <T.BoxGeometry />
         <T.MeshStandardMaterial color={color} />
@@ -100,6 +100,7 @@
     <T.Mesh
             position={[$PositionX + $PositionScale, $PositionY / 3.3, $PositionZ + $PositionScale]}
             scale={[$scale / 8, $scale / 4, $scale / 8]}
+            castShadow
     >
         <T.BoxGeometry />
         <T.MeshStandardMaterial color={color} />
@@ -108,6 +109,7 @@
     <T.Mesh
             position={[$PositionX, $PositionY / 3.3, $PositionZ + $PositionScale]}
             scale={[$scale / 8, $scale / 4, $scale / 8]}
+            castShadow
     >
         <T.BoxGeometry />
         <T.MeshStandardMaterial color={color} />
