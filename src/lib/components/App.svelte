@@ -24,7 +24,7 @@
 
     .skills {
         min-height: 65vh;
-        border: rgb(200, 200, 200) 4px solid;
+        border: white 4px solid;
         border-radius: 2px;
     }
     
@@ -34,13 +34,13 @@
     }
 
     h2 {
-        color: rgb(200, 200, 200);
+        color: rgb(160, 160, 160);
         font-size: 1.5vw;
         text-align: center;
     }
 
     h3 {
-        color: rgb(180, 180, 180);
+        color: rgb(100, 100, 100);
         font-size: 1.2vw;
         text-align: center;
     }
@@ -53,13 +53,21 @@
     footer {
         height: 12.5%;
     }
+
+    .examples {
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+    }
     
     .examples div {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         gap: 1vw;
+        border: rgb(160, 160, 160) 4px solid;
+        padding: 2vw;
     }
 
     .docs {
@@ -98,16 +106,16 @@
 
     <h2>Arbeitsbeispiele</h2>
     <div class="examples">
-        <h3>Portfolio</h3>
         <div>
+            <h3>Portfolio</h3>
             <p>
                 Das erste Beispiel ist das Portfolio, in welchem Sie sich bereits befinden. Den Quellcode können Sie auf 
                 <a href="https://www.github.com/yetanothercoder00/yetanothercoder00.github.io">Github</a> anschauen.
             </p>
         </div>
 
-        <h3>Bug Tracker</h3>
         <div>
+            <h3>Bug Tracker</h3>
             <p>
                 Das zweite Beispiel ist ein "Bug Tracker", welchen ich mit ASP.NET, C# und Microsoft SQL Server gebaut habe. Den Quellcode dafür können Sie auch auf <a href="https://www.github.com/yetanothercoder00/bugtracker">Github</a> finden.
             </p>
