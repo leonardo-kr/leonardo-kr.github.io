@@ -3,11 +3,10 @@
 
     import { T, useFrame } from '@threlte/core';
     import { interactivity, Environment, OrbitControls } from "@threlte/extras";
-    import { CircleGeometry, MeshStandardMaterial, Vector3 } from "three";
+    import { BoxGeometry, CircleGeometry, Mesh, MeshStandardMaterial, Vector3 } from "three";
 
     import { get } from "svelte/store";
     import { spring } from "svelte/motion";
-    import { selectedCube } from "../../stores";
 
     import BackendCube from "$lib/components/cubes/BackendCube.svelte";
     import FrontendCube from "$lib/components/cubes/FrontendCube.svelte";
@@ -15,11 +14,10 @@
     import DatabaseCube from "$lib/components/cubes/DatabaseCube.svelte";
 
     enum cube {
-        none = -1,
         backend = 0,
         frontend = 1,
-        tool = 2,
-        database = 3
+        database = 2,
+        tool = 3,
     }
 
     interactivity();
@@ -28,10 +26,10 @@
     // rotation.stiffness = 0.01;
     // rotation.damping = 1;
     
-    const backendPosition = new Vector3(-4.5, 1, -4.5);
-    const frontendPosition = new Vector3(3.5, 1, -4.5);
-    const toolPosition = new Vector3(-4.5, 1, 3.5);
-    const databasePosition = new Vector3(3.5, 1, 3.5);
+    const backendPosition = {x: spring(-0.5), y: spring(0.5), z: spring(-0.5)};
+    const frontendPosition = {x: spring(20), y: spring(0.5), z: spring(-0.5)};
+    const databasePosition = {x: spring(40), y: spring(0.5), z: spring(-0.5)};
+    const toolPosition = {x: spring(60), y: spring(0.5), z: spring(-0.5)};
     
     const cameraPosition = new Vector3(-20, 11, 30);
     const cameraPositionX = spring(cameraPosition.x);
@@ -42,18 +40,42 @@
     const lookAtY = spring(0);
     const lookAtZ = spring(0);
 
-    const unsubscribe = selectedCube.subscribe(value => {
-        console.log(value);
-    });
-    
+    let selectedCube = 0;
+
     useFrame(() => {
-        if (get(selectedCube) === cube.none) {
-            // rotation += 0.0005;
-            // rotation.update((value) => value += 0.0005);
-        }
+        // rotation += 0.0005;
+        // rotation.update((value) => value += 0.0005);
     });
+
+    function setPosition() {
+            switch (selectedCube) {
+                case cube.backend:
+                    backendPosition.x.set(-0.5);
+                    frontendPosition.x.set(20);
+                    databasePosition.x.set(40);
+                    toolPosition.x.set(60);
+                    break;
+                case cube.frontend:
+                    backendPosition.x.set(-20);
+                    frontendPosition.x.set(-0.5);
+                    databasePosition.x.set(20);
+                    toolPosition.x.set(40);
+                    break;
+                case cube.database:
+                    backendPosition.x.set(-40);
+                    frontendPosition.x.set(-20);
+                    databasePosition.x.set(-0.5);
+                    toolPosition.x.set(20);
+                    break;
+                case cube.tool:
+                    backendPosition.x.set(-60);
+                    frontendPosition.x.set(-40);
+                    databasePosition.x.set(-20);
+                    toolPosition.x.set(-0.5);
+                    break;
+            }
+    }
     
-    onDestroy(unsubscribe);
 </script>
 
 <T.Group rotation.y={0}>
@@ -82,16 +104,123 @@
 
 <T.Group>
     
+    <!-- <T.Mesh -->
+    <!--     position={[5, -2, -10]} -->
+    <!---->
+    <!--     rotation.y={-30 / 180 * Math.PI} -->
+    <!--     rotation.z={45 / 180 * Math.PI} -->
+    <!---->
+    <!--     scale={20} -->
+    <!-- > -->
+    <!--     <T.CircleGeometry args={[2.5, 4]} /> -->
+    <!--     <T.MeshStandardMaterial color={"#202020"} /> -->
+    <!-- </T.Mesh> -->
+
     <T.Mesh
-        position={[5, -2, -10]}
+        position={[-5, -3, 5]}
+        scale={0.45}
 
-        rotation.y={-30 / 180 * Math.PI}
-        rotation.z={45 / 180 * Math.PI}
-
-        scale={20}
+        on:click={(event) => {
+            if (selectedCube < 3) {
+                selectedCube += 1;
+            }
+            else {
+                selectedCube = 0;
+            }
+            setPosition();
+            event.stopPropagation();
+        }}
     >
-        <T.CircleGeometry args={[2.5, 4]} />
-        <T.MeshStandardMaterial color={"#202020"} />
+    
+        <T.CylinderGeometry args={[2.5, 2.5, 1.5, 40]} />
+        <T.MeshStandardMaterial color={"#ff0000"} transparent opacity={0}/>
+
+    </T.Mesh>
+    
+    <T.Mesh
+
+            position.x={-5}
+            position.y={-3}
+            position.z={5}
+
+            scale={0.4}
+
+            receiveShadow>
+
+        <T.CylinderGeometry args={[2, 2.5, 1, 40]} />
+        <T.MeshStandardMaterial color={"#ffffff"} />
+    </T.Mesh>
+
+    <T.Mesh
+            rotation.y={30 / 180 * Math.PI}
+            position.x={-5}
+            position.y={-2.75}
+            position.z={5}
+
+            scale={0.3}
+
+            receiveShadow>
+
+    >
+
+        
+        <T.CylinderGeometry args={[2.5, 2.5, 0.5, 3]} />
+        <T.MeshStandardMaterial color={"#000000"} />
+
+    </T.Mesh>
+
+    <T.Mesh
+
+            position.x={5}
+            position.y={-3}
+            position.z={5}
+
+            scale={0.4}
+
+            receiveShadow>
+
+        <T.CylinderGeometry args={[2, 2.5, 1, 40]} />
+        <T.MeshStandardMaterial color={"#ffffff"} />
+    </T.Mesh>
+    
+    <T.Mesh
+            rotation.y={(30 + 180) / 180 * Math.PI}
+            position.x={5}
+            position.y={-2.75}
+            position.z={5}
+
+            scale={0.3}
+
+            receiveShadow>
+
+    >
+
+        
+        <T.CylinderGeometry args={[2.5, 2.5, 0.5, 3]} />
+        <T.MeshStandardMaterial color={"#000000"} />
+
+    </T.Mesh>
+    
+    <T.Mesh
+        position={[5, -3, 5]}
+        scale={0.45}
+
+        on:click={(event) => {
+            // change selected cube
+            if (selectedCube > 0) {
+                selectedCube -= 1;
+            }
+            else {
+                selectedCube = 3;
+            }
+            setPosition();
+            event.stopPropagation();
+        }}
+    >
+    
+        <T.CylinderGeometry args={[2.5, 2.5, 1.5, 40]} />
+        <T.MeshStandardMaterial color={"#ff0000"} transparent opacity={0}/>
+
     </T.Mesh>
 
     <BackendCube 
@@ -103,12 +232,12 @@
             color={"#F00000"}
             position={frontendPosition}
         />
-    
+
     <ToolCube
             color={"#FA8000"}
             position={toolPosition}
         />
-    
+
     <DatabaseCube
             color={"#0059FF"}
             position={databasePosition}

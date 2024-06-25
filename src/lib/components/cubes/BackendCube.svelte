@@ -2,29 +2,36 @@
     import { T } from '@threlte/core';
     import { Text3DGeometry } from "@threlte/extras";
     import { spring } from "svelte/motion";
-    import { Vector3 } from "three";
-    import { selectedCube } from "../../../stores";
-    import { get } from "svelte/store";
+    import { MeshStandardMaterial, Vector3 } from "three";
 
     export let color: string;
     
-    export let position: Vector3 = new Vector3(0, 0, 0);
+    export let position: any = {x: 0, y: 0, z: 0};
 
-    const scale = spring(2.5);
-    
-    const PositionX = spring(position.x);
-    const PositionY = spring(position.y);
-    const PositionZ = spring(position.z);
+    const scale = spring(5);
+
+    let PositionX = position.x;
+    let PositionY = position.y;
+    let PositionZ = position.z;
+
+    $: {
+        PositionX = position.x;
+        PositionY = position.y;
+        PositionZ = position.z;
+    }
+
+
+    const planePositionY = spring(-1.5);
 
     const PositionScale = spring(1);
     const TextScale = spring(0);
-    
+
 </script>
 
 <T.Group>
     
     <T.Mesh
-        position={[$PositionX - $PositionScale / 6, $PositionY + $PositionScale / 2, $PositionZ + $PositionScale / 2]}
+        position={[$PositionX - 0.75, $PositionY + 3, $PositionZ + 2.75]}
         scale={$scale / 1000}
     >
         <Text3DGeometry text="Backend" />
@@ -32,28 +39,58 @@
     </T.Mesh>
 
     <T.Mesh
+        position={[$PositionX - 0.95, $PositionY - 0.75, $PositionZ + 1.6]}
+        scale={$TextScale / 150}
+    >
+        <Text3DGeometry text="C" />
+        <T.MeshStandardMaterial color={"#FFFFFF"} />
+    </T.Mesh>
+
+    <T.Mesh
+        position={[$PositionX + 1.25, $PositionY - 0.5, $PositionZ + 1.6]}
+        scale={$TextScale / 150}
+    >
+        <Text3DGeometry text="C++" />
+        <T.MeshStandardMaterial color={"#FFFFFF"} />
+    </T.Mesh>
+    
+    <T.Mesh
+        position={[$PositionX + 0.1, $PositionY + 1.5, $PositionZ + 0.35]}
+        scale={$TextScale / 150}
+    >
+        <Text3DGeometry text="C#" />
+        <T.MeshStandardMaterial color={"#FFFFFF"} />
+    </T.Mesh>
+    
+    <T.Mesh
+        position={[$PositionX + 1.15, $PositionY + 0.75, $PositionZ - 0.9]}
+        scale={$TextScale / 150}
+    >
+        <Text3DGeometry text="Java" />
+        <T.MeshStandardMaterial color={"#FFFFFF"} />
+    </T.Mesh>
+    
+    <T.Mesh
+        position={[$PositionX - 1.2, $PositionY - 0.25, $PositionZ - 0.9]}
+        scale={$TextScale / 150}
+    >
+        <Text3DGeometry text="PHP" />
+        <T.MeshStandardMaterial color={"#FFFFFF"} />
+    </T.Mesh>
+    
+    <T.Mesh
         position={[$PositionX + $PositionScale / 2, $PositionY, $PositionZ + $PositionScale / 2]}
 
         scale={$scale}
 
         on:pointerenter={(event) => {
-            scale.set(5);
-            PositionX.set(-5);
-            PositionY.set(2);
-            PositionZ.set(-5);
             
-            PositionScale.set(2);
-            TextScale.set(4)
+            TextScale.set(0.6);
             
             event.stopPropagation();
         }}
         on:pointerleave={() => {
-            scale.set(2.5);
-            PositionX.set(position.x);
-            PositionY.set(position.y);
-            PositionZ.set(position.z);
-            
-            PositionScale.set(1);
+            TextScale.set(0);
         }}
     >
         <T.BoxGeometry />
@@ -64,7 +101,8 @@
             rotation.z={45 / 180 * Math.PI}
 
             position.x={$PositionX + $PositionScale / 2}
-            position.z={$PositionX + $PositionScale / 2}
+            position.y={$planePositionY}
+            position.z={$PositionZ + $PositionScale / 2}
 
             scale={$scale / 4}
 
@@ -75,8 +113,8 @@
     </T.Mesh>
 
     <T.Mesh
-            position={[$PositionX, $PositionY / 3.3, $PositionZ]}
-            scale={[$scale / 8, $scale / 4, $scale / 8]}
+            position={[$PositionX - 0.75, $PositionY - 1.25, $PositionZ - 0.75]}
+            scale={[$scale / 6, $scale / 3, $scale / 6]}
             castShadow
     >
         <T.BoxGeometry />
@@ -84,8 +122,8 @@
     </T.Mesh>
 
     <T.Mesh
-            position={[$PositionX + $PositionScale, $PositionY / 3.3, $PositionZ]}
-            scale={[$scale / 8, $scale / 4, $scale / 8]}
+            position={[$PositionX + 1.75, $PositionY - 0.75, $PositionZ - 0.75]}
+            scale={[$scale / 6, $scale / 2, $scale / 6]}
             castShadow
     >
         <T.BoxGeometry />
@@ -93,8 +131,8 @@
     </T.Mesh>
 
     <T.Mesh
-            position={[$PositionX + $PositionScale, $PositionY / 3.3, $PositionZ + $PositionScale]}
-            scale={[$scale / 8, $scale / 4, $scale / 8]}
+            position={[$PositionX + 1.75, $PositionY - 1.45, $PositionZ + 1.75]}
+            scale={[$scale / 6, $scale / 4, $scale / 6]}
             castShadow
     >
         <T.BoxGeometry />
@@ -102,8 +140,8 @@
     </T.Mesh>
 
     <T.Mesh
-            position={[$PositionX, $PositionY / 3.3, $PositionZ + $PositionScale]}
-            scale={[$scale / 8, $scale / 4, $scale / 8]}
+            position={[$PositionX - 0.75, $PositionY - 1.5, $PositionZ + 1.75]}
+            scale={[$scale / 6, $scale / 5, $scale / 6]}
             castShadow
     >
         <T.BoxGeometry />
@@ -111,8 +149,8 @@
     </T.Mesh>
 
     <T.Mesh
-            position={[$PositionX + $PositionScale / 2, $PositionY / 3.3, $PositionZ + $PositionScale / 2]}
-            scale={[$scale / 8, $scale / 4, $scale / 8]}
+            position={[$PositionX + 0.5, $PositionY - 0.5, $PositionZ + 0.5]}
+            scale={[$scale / 6, $scale / 1.5, $scale / 6]}
             castShadow
     >
         <T.BoxGeometry />
