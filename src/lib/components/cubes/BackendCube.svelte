@@ -56,8 +56,9 @@
             
             PositionScale.set(1);
         }}
-        on:click={() => {
+        on:click={(event) => {
             selectedCube.set(0);
+            event.stopPropagation();
         }}
     >
         <T.BoxGeometry />

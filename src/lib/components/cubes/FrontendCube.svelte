@@ -46,12 +46,19 @@
             event.stopPropagation();
         }}
         on:pointerleave={() => {
+            if (get(selectedCube) === 1) {
+                selectedCube.set(-1);
+            }
             scale.set(2.5);
             PositionX.set(3.5);
             PositionY.set(1);
             PositionZ.set(-4.5);
             
             PositionScale.set(1);
+        }}
+        on:click={(event) => {
+            selectedCube.set(1);
+            event.stopPropagation();
         }}
     >
         <T.BoxGeometry />

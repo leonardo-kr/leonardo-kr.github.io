@@ -21,6 +21,7 @@
 </script>
 
 <T.Group>
+    
 
     <T.Mesh
             position={[$PositionX + $PositionScale / 20, $PositionY + $PositionScale / 2, $PositionZ + $PositionScale / 2]}
@@ -46,12 +47,19 @@
             event.stopPropagation();
         }}
         on:pointerleave={() => {
+            if (get(selectedCube) === 2) {
+                selectedCube.set(-1);
+            }
             scale.set(2.5);
             PositionX.set(-4.5);
             PositionY.set(1);
             PositionZ.set(3.5);
             
             PositionScale.set(1);
+        }}
+        on:click={(event) => {
+            selectedCube.set(2);
+            event.stopPropagation();
         }}
     >
         <T.BoxGeometry />
