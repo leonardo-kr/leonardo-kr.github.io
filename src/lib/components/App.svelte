@@ -80,15 +80,15 @@
     <div class="kurzprofil"> 
         
         Ich bin ein passionierter Informatiker und baue gerne Software. <br>
-        Am Liebsten programmiere ich mit C#, da ich damit am effizientesten arbeiten kann, sei es eine Webseite oder ein kleines Programm. <br>
-        Mein Ziel ist es eine Software zu kreieren, welche anderen Menschen hilft, sei es ein kleines Tool für Informatiker oder ein kompliziertes Programm. <br>
+        Am Liebsten programmiere ich mit C#, da ich damit am effizientesten arbeiten kann, sei es an einer Webseite oder einem kleinen Programm. <br>
+        Mein Ziel ist es, eine Software zu kreieren, welche anderen Menschen hilft, sei es ein kleines Tool für Informatiker/-innen oder ein grösseres Programm für Benutzer/-innen. <br>
         
 
     </div>
 
     <h2>Informatikkompetenzen</h2>
         <p>
-            Die vier Würfel gruppieren verschiedene Aspekte meiner Informatikkompetenzen zusammen. In diesen Würfeln gibt es Türme, welche meine Kompetenzen in einer bestimmten Sprache o.ä. zeigen. Je höher der Balken, desto grösser sind meine Kompetenzen in dieser Sprache.
+            Die im folgenden dargestellten vier Würfel zeigen verschiedene Aspekte meiner Informatikkompetenzen. Je höher die Türme, desto grösser ist mein Wissen und Können in der entsprechenden Sprache bzw. im entsprechenden Bereich.
         </p>
     <div class="skills">
         <Canvas>
@@ -101,7 +101,7 @@
         <h3>Portfolio</h3>
         <div>
             <p>
-                Das erste Beispiel ist natürlich das Portfolio, welches Sie sehen. Dieses können Sie auf 
+                Das erste Beispiel ist das Portfolio, in welchem Sie sich bereits befinden. Den Quellcode können Sie auf 
                 <a href="https://www.github.com/yetanothercoder00/yetanothercoder00.github.io">Github</a> anschauen.
             </p>
         </div>
@@ -109,7 +109,7 @@
         <h3>Bug Tracker</h3>
         <div>
             <p>
-                Das zweite Beispiel ist ein "Bug Tracker", welcher ich mit ASP.NET, C# und Microsoft SQL Server gebaut habe. Dies können Sie natürlich auch auf <a href="https://www.github.com/yetanothercoder00/bugtracker">Github</a> finden.
+                Das zweite Beispiel ist ein "Bug Tracker", welchen ich mit ASP.NET, C# und Microsoft SQL Server gebaut habe. Den Quellcode dafür können Sie auch auf <a href="https://www.github.com/yetanothercoder00/bugtracker">Github</a> finden.
             </p>
             <img src={bugtracker} alt="Screenshot vom Bug Tracker" />
         </div>
