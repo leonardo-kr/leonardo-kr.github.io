@@ -44,49 +44,6 @@
 
     const unsubscribe = selectedCube.subscribe(value => {
         console.log(value);
-        switch (value) {
-            case cube.none:
-                cameraPositionX.set(cameraPosition.x);
-                cameraPositionY.set(cameraPosition.y);
-                cameraPositionZ.set(cameraPosition.z);
-
-                lookAtX.set(0);
-                lookAtY.set(0);
-                lookAtZ.set(0);
-                break;
-            case cube.backend:
-                // rotation.set(0);
-                cameraPositionX.set(backendPosition.x - 2.25);
-                cameraPositionY.set(5);
-                cameraPositionZ.set(backendPosition.z + 30);
-                
-                lookAtX.set(backendPosition.x + 0.5);
-                lookAtY.set(backendPosition.y);
-                lookAtZ.set(backendPosition.z);
-                break;
-            case cube.frontend:
-                cameraPositionX.set(frontendPosition.x - 0.5);
-                cameraPositionY.set(5);
-                cameraPositionZ.set(frontendPosition.z + 30);
-
-                lookAtX.set(frontendPosition.x + 0.5);
-                lookAtY.set(frontendPosition.y);
-                lookAtZ.set(frontendPosition.z);
-                break;
-            case cube.tool:
-                cameraPositionX.set(toolPosition.x - 3);
-                cameraPositionY.set(5);
-                cameraPositionZ.set(toolPosition.z + 30);
-
-                lookAtX.set(toolPosition.x + 0.5);
-                lookAtY.set(toolPosition.y);
-                lookAtZ.set(toolPosition.z);
-                break;
-            case cube.database:
-                break;
-            default:
-                break;
-        }
     });
     
     useFrame(() => {
@@ -131,7 +88,7 @@
         rotation.y={-30 / 180 * Math.PI}
         rotation.z={45 / 180 * Math.PI}
 
-        scale={12}
+        scale={20}
     >
         <T.CircleGeometry args={[2.5, 4]} />
         <T.MeshStandardMaterial color={"#202020"} />

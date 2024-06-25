@@ -17,6 +17,7 @@
     const PositionZ = spring(position.z);
 
     const PositionScale = spring(1);
+    const TextScale = spring(0);
     
 </script>
 
@@ -31,7 +32,7 @@
     </T.Mesh>
 
     <T.Mesh
-        position={[-4, $PositionY, -4]}
+        position={[$PositionX + $PositionScale / 2, $PositionY, $PositionZ + $PositionScale / 2]}
 
         scale={$scale}
 
@@ -42,23 +43,17 @@
             PositionZ.set(-5);
             
             PositionScale.set(2);
+            TextScale.set(4)
             
             event.stopPropagation();
         }}
         on:pointerleave={() => {
-            if (get(selectedCube) === 0) {
-                selectedCube.set(-1);
-            }
             scale.set(2.5);
             PositionX.set(position.x);
             PositionY.set(position.y);
             PositionZ.set(position.z);
             
             PositionScale.set(1);
-        }}
-        on:click={(event) => {
-            selectedCube.set(0);
-            event.stopPropagation();
         }}
     >
         <T.BoxGeometry />
@@ -68,8 +63,8 @@
             rotation.x={-Math.PI / 2}
             rotation.z={45 / 180 * Math.PI}
 
-            position.x={-4}
-            position.z={-4}
+            position.x={$PositionX + $PositionScale / 2}
+            position.z={$PositionX + $PositionScale / 2}
 
             scale={$scale / 4}
 

@@ -56,10 +56,6 @@
             
             PositionScale.set(1);
         }}
-        on:click={(event) => {
-            selectedCube.set(3);
-            event.stopPropagation();
-        }}
     >
         <T.BoxGeometry />
         <!--  <T.MeshStandardMaterial color="#0059BA" transparent={true} opacity={0.5} />-->
