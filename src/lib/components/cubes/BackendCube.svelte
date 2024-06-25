@@ -2,7 +2,6 @@
     import { T } from '@threlte/core';
     import { Text3DGeometry } from "@threlte/extras";
     import { spring } from "svelte/motion";
-    import { MeshStandardMaterial, Vector3 } from "three";
 
     export let color: string;
     

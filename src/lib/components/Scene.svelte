@@ -1,11 +1,8 @@
 <script lang="ts">
-    import {onDestroy, onMount} from "svelte";
-
     import { T, useFrame } from '@threlte/core';
-    import { interactivity, Environment, OrbitControls } from "@threlte/extras";
-    import { BoxGeometry, CircleGeometry, Mesh, MeshStandardMaterial, Vector3 } from "three";
+    import { interactivity, OrbitControls } from "@threlte/extras";
+    import { Vector3 } from "three";
 
-    import { get } from "svelte/store";
     import { spring } from "svelte/motion";
 
     import BackendCube from "$lib/components/cubes/BackendCube.svelte";
@@ -21,10 +18,6 @@
     }
 
     interactivity();
-
-    // const rotation = spring(0);
-    // rotation.stiffness = 0.01;
-    // rotation.damping = 1;
     
     const backendPosition = {x: spring(-0.5), y: spring(0.5), z: spring(-0.5)};
     const frontendPosition = {x: spring(20), y: spring(0.5), z: spring(-0.5)};
@@ -103,18 +96,6 @@
 <T.AmbientLight intensity={0.4} />
 
 <T.Group>
-    
-    <!-- <T.Mesh -->
-    <!--     position={[5, -2, -10]} -->
-    <!---->
-    <!--     rotation.y={-30 / 180 * Math.PI} -->
-    <!--     rotation.z={45 / 180 * Math.PI} -->
-    <!---->
-    <!--     scale={20} -->
-    <!-- > -->
-    <!--     <T.CircleGeometry args={[2.5, 4]} /> -->
-    <!--     <T.MeshStandardMaterial color={"#202020"} /> -->
-    <!-- </T.Mesh> -->
 
     <T.Mesh
         position={[-5, -3, 5]}

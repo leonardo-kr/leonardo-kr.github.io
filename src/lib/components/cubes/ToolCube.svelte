@@ -2,10 +2,7 @@
     import { T } from '@threlte/core';
     import { Text3DGeometry } from "@threlte/extras";
     import { spring } from "svelte/motion";
-    import { Vector3 } from "three";
-    import { selectedCube } from "../../../stores";
-    import { get } from "svelte/store";
-    
+
     export let color: string;
     
     export let position: any = {x: 0, y: 0, z: 0};
