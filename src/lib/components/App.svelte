@@ -111,8 +111,9 @@
 
     <h2>Informatikkompetenzen</h2>
         <p>
-            Die im folgenden dargestellten vier Würfel zeigen verschiedene Aspekte meiner Informatikkompetenzen. Je höher die Türme, desto grösser ist mein Wissen und Können in der entsprechenden Sprache bzw. im entsprechenden Bereich.
+            Die im folgenden dargestellten vier Würfel zeigen verschiedene Aspekte meiner Informatikkompetenzen. Je höher die Türme, desto grösser ist mein Wissen und Können in der entsprechenden Sprache bzw. im entsprechenden Bereich. 
         </p>
+        <i style="font-size: 0.9vw; color: rgb(180, 180, 180); padding-bottom: 1vh;">Mit der linken Maustaste können Sie die Kamera bewegen. Wenn Sie mit der Maus über den Würfel gehen, werden Ihnen die Sprachen bzw. Bereiche angezeigt mit Text.</i>
     <div class="skills">
         <Canvas>
           <Scene />
