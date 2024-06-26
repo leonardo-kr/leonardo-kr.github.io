@@ -82,7 +82,9 @@
             focalLength={10}
     >
         <!--    maxPolarAngle={1.4}-->
-        <OrbitControls enableDamping  enablePan={false} maxPolarAngle={1.4} target={[$lookAtX, $lookAtY, $lookAtZ]} />
+        <OrbitControls enableDamping  enablePan={false} maxPolarAngle={1.4} target={[$lookAtX, $lookAtY, $lookAtZ]} maxDistance={50} minDistance={20} 
+            maxAzimuthAngle={2} minAzimuthAngle={-2}    
+        />
     </T.PerspectiveCamera>
 </T.Group>
 
