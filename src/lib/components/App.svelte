@@ -4,6 +4,7 @@
 
   import bugtracker from "$lib/assets/images/bugtracker.png";
   import portfolioScreenshot from "$lib/assets/images/portfolioScreenshot.png";
+  import instantMessenger from "$lib/assets/images/instantMessenger.png";
 
   import lebenslauf from "$lib/assets/docs/lebenslauf.pdf";
   import modulnoten from "$lib/assets/docs/modulnoten.pdf";
@@ -137,6 +138,13 @@
                 Das zweite Beispiel ist ein "Bug Tracker", welchen ich mit ASP.NET, C# und Microsoft SQL Server gebaut habe. Den Quellcode dafür können Sie auch auf <a href="https://www.github.com/yetanothercoder00/bugtracker">Github</a> finden. Diese Webseite wurde mit dem MVC-Pattern und Entity Framework Core erstellt.
             </p>
             <img src={bugtracker} alt="Screenshot vom Bug Tracker" />
+        </div>
+        <div>
+            <h3>Instant Messenger</h3>
+            <p>
+                Das dritte Beispiel ist ein "Instant Messenger", welcher mithilfe von <a href="https://kit.svelte.dev">SvelteKit</a> gebaut wurde. Hier werden Nachrichten in einer SQLite3 Datenbank auf einem Server gespeichert und in Intervallen von einer Sekunde abgerufen und angezeigt. Den Quellcode können Sie auf <a href="https://www.github.com/yetanothercoder00/instantmessenger">Github</a> finden.
+            </p>
+            <img src={instantMessenger} alt="Screenshot des instant messengers" />
         </div>
     </div>
 
