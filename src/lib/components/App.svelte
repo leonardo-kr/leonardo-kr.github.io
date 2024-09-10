@@ -48,7 +48,7 @@
                 Das erste Beispiel ist das Portfolio, in welchem Sie sich
                 bereits befinden. Den Quellcode können Sie auf
                 <a
-                    href="https://www.github.com/yetanothercoder00/yetanothercoder00.github.io"
+                    href="https://www.github.com/leonardo-kr/leonardo-kr.github.io"
                     >GitHub</a
                 > anschauen.
             </p>
@@ -61,7 +61,7 @@
                 Das zweite Beispiel ist ein "Bug Tracker", welchen ich mit
                 ASP.NET, C# und Microsoft SQL Server gebaut habe. Den Quellcode
                 dafür können Sie auch auf <a
-                    href="https://www.github.com/yetanothercoder00/bugtracker"
+                    href="https://www.github.com/leonardo-kr/bugtracker"
                     >GitHub</a
                 > finden. Diese Webseite wurde mit dem MVC-Pattern und Entity Framework
                 Core erstellt.
@@ -77,7 +77,7 @@
                 auf einem Server gespeichert und in Intervallen von einer
                 Sekunde abgerufen und angezeigt. Den Quellcode können Sie auf
                 <a
-                    href="https://www.github.com/yetanothercoder00/instantmessenger"
+                    href="https://www.github.com/leonardo-kr/instantmessenger"
                     >GitHub</a
                 > finden.
             </p>
